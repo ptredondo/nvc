@@ -12,3 +12,5 @@ Encoding: UTF-8
 Imports: RANN, gtools, LSTS, signal, pcaPP, igraph, parallel, stats,
     graphics, grDevices
 NeedsCompilation: no
+URL: https://github.com/ptredondo/nvc
+BugReports: https://github.com/ptredondo/nvc/issues
