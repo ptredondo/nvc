@@ -1,0 +1,14 @@
+Package: nvc
+Type: Package
+Title: Nonlinear Coherence for Vector Time Series: Defining Region-to-Region Functional Brain Connectivity
+Version: 0.1.0
+Authors@R: person("Paolo", "Redondo", role = c("aut", "cre"), email = "p.redondo@lancaster.ac.uk")
+Description: Estimates rank-based dependence measures and nonlinear vector
+    coherence from block periodograms of multivariate time series. Includes
+    permutation tests, comparisons with linear and Kendall-based coherence,
+    bandpass filtering, simulation, and EEG connectivity visualization.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports: RANN, gtools, LSTS, signal, pcaPP, igraph, parallel, stats,
+    graphics, grDevices
+NeedsCompilation: no
