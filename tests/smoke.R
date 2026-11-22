@@ -13,6 +13,18 @@ stopifnot(identical(names(fit), c("freq", "nvc")), length(fit$nvc) == 50L)
 fit <- nvc(x, y, blength = 100, nboot = 3, ncores = 1)
 stopifnot(identical(names(fit), c("freq", "nvc", "pval", "pval.adj")))
 stopifnot(all(fit$pval >= 0 & fit$pval <= 1))
+freq.ind <- c(3L, 12L, 25L)
+freq.sub <- fit$freq[freq.ind]
+fit.full <- nvc(x, y, blength = 100)
+fit.sub <- nvc(x, y, blength = 100, freq = freq.sub)
+stopifnot(identical(fit.sub$freq, freq.sub),
+          isTRUE(all.equal(fit.sub$nvc, fit.full$nvc[freq.ind])))
+fit.sub.test <- nvc(x, y, blength = 100, freq = freq.sub, nboot = 3, ncores = 1)
+stopifnot(identical(fit.sub.test$freq, freq.sub),
+          isTRUE(all.equal(fit.sub.test$nvc, fit.sub$nvc)),
+          length(fit.sub.test$pval) == length(freq.sub),
+          all(fit.sub.test$pval >= 0 & fit.sub.test$pval <= 1),
+          isTRUE(all.equal(fit.sub.test$pval.adj, p.adjust(fit.sub.test$pval, method = "BH"))))
 cfit <- coh(x[, 1], x[, 1], blength = 100)
 stopifnot(all(abs(cfit$coh - 1) < 1e-10))
 cc <- cancoh(x, y, blength = 100)

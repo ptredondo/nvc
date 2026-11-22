@@ -26,8 +26,9 @@ for the current \code{nvc} implementation.}
 \code{NULL} uses all orderings.}
 \item{blength}{Positive even block length. Supply at least two complete blocks
 and a series length divisible by the block length.}
-\item{freq}{Frequency labels; \code{NULL} uses the complete positive Fourier
-grid. Custom labels currently correspond to the first bins, not arbitrary bins.}
+\item{freq}{Selected normalized positive Fourier frequencies; \code{NULL}
+uses the complete positive Fourier grid. Supply a unique, increasing subset
+of \code{seq(0, 0.5, length = blength / 2 + 1)[-1]} for exact matching.}
 \item{b.scale}{Standardize each component within each block before computing periodograms.}
 \item{nboot}{Number of permutation replicates; zero skips inference.}
 \item{ncores}{Number of workers. For \code{xi.vec}, \code{NULL} selects available

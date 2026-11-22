@@ -45,8 +45,14 @@ nvc <- function(x, y, perm.inv = TRUE, nperm = NULL,
   
   ## Fourier frequencies
   if (is.null(freq)) {
-    freq <- seq(0, 0.5, length = blength / 2 + 1)[-1]
+    freq.all <- seq(0, 0.5, length = blength / 2 + 1)[-1]
+    freq.ind <- 1:length(freq.all)
+    freq <- freq.all
+  } else {
+    freq.all <- seq(0, 0.5, length = blength / 2 + 1)[-1]
+    freq.ind <- (1:length(freq.all))[freq.all %in% freq]
   }
+  
   
   ## Initialize NVC estimates
   nvc.est <- rep(NA, length(freq))
@@ -58,8 +64,8 @@ nvc <- function(x, y, perm.inv = TRUE, nperm = NULL,
     
     for (f in seq_along(freq)) {
       res <- xi.vec(
-        x = x.f[, , f],
-        y = y.f[, , f],
+        x = x.f[, , freq.ind[f]],
+        y = y.f[, , freq.ind[f]],
         perm.inv = perm.inv,
         nperm = nperm,
         nboot = nboot,
@@ -82,8 +88,8 @@ nvc <- function(x, y, perm.inv = TRUE, nperm = NULL,
     ## NVC estimation without permutation testing
     for (f in seq_along(freq)) {
       nvc.est[f] <- xi.vec(
-        x = x.f[, , f],
-        y = y.f[, , f],
+        x = x.f[, , freq.ind[f]],
+        y = y.f[, , freq.ind[f]],
         perm.inv = perm.inv,
         nperm = nperm,
         nboot = nboot,
