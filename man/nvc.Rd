@@ -3,8 +3,9 @@
 \alias{xi}
 \alias{xi.vec}
 \title{Rank-Based Dependence and Nonlinear Vector Coherence}
-\description{Estimate the rank-based coefficient for a scalar response, its
-multivariate extension, or the corresponding frequency-domain measure using
+\description{Estimate the rank-based dependence coefficient for a scalar
+response (Azadkia and Chatterjee, 2021), its multivariate extension
+(Ansari and Fuchs, 2025), or the corresponding frequency-domain measure using
 block periodograms. Nonlinear vector coherence (NVC), proposed by Redondo,
 Huser and Ombao (2025), measures nonlinear frequency-specific dependence
 between vector time series and can be used to characterize region-to-region
@@ -36,7 +37,12 @@ cores minus one, subject to the replicate count. Use one on Windows.}
 a list containing \code{xi} or \code{xi.vec} and \code{pval}, respectively.
 \code{nvc} returns a list with normalized \code{freq} and \code{nvc}; with
 inference it also returns \code{pval} and BH-adjusted \code{pval.adj}.}
-\details{NVC estimates frequency-specific dependence by applying the
+\details{\code{xi} estimates the unconditional dependence coefficient of
+Azadkia and Chatterjee (2021) for a scalar response and vector-valued predictors.
+\code{xi.vec} implements the extension to multi-response vectors by Ansari
+and Fuchs (2025), with an option to average over response-component orderings.
+
+NVC estimates frequency-specific dependence by applying the
 multivariate rank-based dependence measure to componentwise block
 periodograms at each Fourier frequency (Redondo et al., 2025).
 When \code{perm.inv = TRUE}, the multivariate estimator averages over selected
@@ -46,6 +52,13 @@ exchangeability under the null. Negative finite-sample estimates may occur.
 The univariate permutation test retains the original manuscript code and should
 be reviewed before use; see the package README.}
 \references{
+Azadkia, M., and Chatterjee, S. (2021). A simple measure of conditional
+dependence. \emph{The Annals of Statistics}, 49(6), 3070--3102.
+
+Ansari, J., and Fuchs, S. (2025). A direct extension of Azadkia & Chatterjee's
+rank correlation to multi-response vectors. \emph{arXiv preprint}
+arXiv:2212.01621. \url{https://arxiv.org/abs/2212.01621}.
+
 Redondo, P. V., Huser, R., and Ombao, H. (2025).
 Nonlinear Coherence for Vector Time Series: Defining Region-to-Region
 Functional Brain Connectivity. \emph{arXiv preprint} arXiv:2511.14417.
