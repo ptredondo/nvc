@@ -5,7 +5,10 @@
 \title{Rank-Based Dependence and Nonlinear Vector Coherence}
 \description{Estimate the rank-based coefficient for a scalar response, its
 multivariate extension, or the corresponding frequency-domain measure using
-block periodograms. Optional permutation tests assess independence.}
+block periodograms. Nonlinear vector coherence (NVC), proposed by Redondo,
+Huser and Ombao (2025), measures nonlinear frequency-specific dependence
+between vector time series and can be used to characterize region-to-region
+functional brain connectivity. Optional permutation tests assess independence.}
 \usage{
 xi(x, y, nboot = 0, ncores = 1)
 xi.vec(x, y, perm.inv = TRUE, nperm = NULL, nboot = 0, ncores = NULL)
@@ -33,11 +36,21 @@ cores minus one, subject to the replicate count. Use one on Windows.}
 a list containing \code{xi} or \code{xi.vec} and \code{pval}, respectively.
 \code{nvc} returns a list with normalized \code{freq} and \code{nvc}; with
 inference it also returns \code{pval} and BH-adjusted \code{pval.adj}.}
-\details{The multivariate estimator averages over selected component orderings.
+\details{NVC estimates frequency-specific dependence by applying the
+multivariate rank-based dependence measure to componentwise block
+periodograms at each Fourier frequency (Redondo et al., 2025).
+When \code{perm.inv = TRUE}, the multivariate estimator averages over selected
+component orderings.
 The number of possible orderings grows factorially. The permutation test requires
 exchangeability under the null. Negative finite-sample estimates may occur.
 The univariate permutation test retains the original manuscript code and should
 be reviewed before use; see the package README.}
+\references{
+Redondo, P. V., Huser, R., and Ombao, H. (2025).
+Nonlinear Coherence for Vector Time Series: Defining Region-to-Region
+Functional Brain Connectivity. \emph{arXiv preprint} arXiv:2511.14417.
+\url{https://arxiv.org/abs/2511.14417}.
+}
 \examples{
 set.seed(1)
 x <- matrix(rnorm(2000), ncol = 2)

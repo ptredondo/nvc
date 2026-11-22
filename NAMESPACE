@@ -1,7 +1,7 @@
 export(xi)
 export(xi.vec)
 export(nvc)
-export(extract_rhythms)
+export(extract.fband)
 export(sim.fband)
 export(coh)
 export(band.coh)

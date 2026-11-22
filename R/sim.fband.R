@@ -40,7 +40,7 @@ sim.fband <- function(nsec, samprate, fband) {
     )
     
     Z[, f] <- scale(
-      extract_rhythms(
+      extract.fband(
         x = stats::arima.sim(model = list(ar = par), n = Tlength),
         samprate = samprate,
         fband = fband[f]

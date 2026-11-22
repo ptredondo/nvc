@@ -9,7 +9,7 @@ kencoh <- function(x, y, samprate = 100,
   x.f <- array(NA_real_, dim = c(Tlength, p, length(fband)))
   
   for (ch in seq_len(p)) {
-    x.band <- extract_rhythms(x[, ch], samprate = samprate, fband = fband)
+    x.band <- extract.fband(x[, ch], samprate = samprate, fband = fband)
     
     for (f in seq_along(fband)) {
       x.f[, ch, f] <- x.band[[f]]
@@ -20,7 +20,7 @@ kencoh <- function(x, y, samprate = 100,
   y.f <- array(NA_real_, dim = c(Tlength, q, length(fband)))
   
   for (ch in seq_len(q)) {
-    y.band <- extract_rhythms(y[, ch], samprate = samprate, fband = fband)
+    y.band <- extract.fband(y[, ch], samprate = samprate, fband = fband)
     
     for (f in seq_along(fband)) {
       y.f[, ch, f] <- y.band[[f]]

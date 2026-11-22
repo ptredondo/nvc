@@ -1,4 +1,4 @@
-extract_rhythms <- function(x, samprate,
+extract.fband <- function(x, samprate,
                             fband = c("delta", "theta", "alpha", "beta", "gamma"),
                             method = "butter", twosided = TRUE) {
   

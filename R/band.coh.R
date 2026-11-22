@@ -4,8 +4,8 @@ band.coh <- function(x, y, samprate = 100, l_max = 50,
   Tlength <- length(x)
   
   ## Extract frequency-specific signals
-  x.f <- extract_rhythms(x, samprate = samprate, fband = fband)
-  y.f <- extract_rhythms(y, samprate = samprate, fband = fband)
+  x.f <- extract.fband(x, samprate = samprate, fband = fband)
+  y.f <- extract.fband(y, samprate = samprate, fband = fband)
   
   ## Define time indices and lags
   time.sub <- (l_max + 1):(Tlength - l_max)
